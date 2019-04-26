@@ -3,7 +3,7 @@ function [V,B,EE,C,PO] = process_d_lon(X,Y,w,YY,state, neighbours)
 %  [V,B,EE,C,PO] = process_d_lon(X,Y,w,YY,state, neighbours)
 %
 % Processes data outputted from exaustive_generate_lon to create 
-% the matrices needed to plot the PLON
+% the matrices needed to plot the DNON
 %
 % see generate_GECCO_2019_plots for example usage
 %
