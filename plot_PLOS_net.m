@@ -47,7 +47,6 @@ LWidths = edge_weight*G.Edges.Weight/max(G.Edges.Weight);
 % for i=1:length(L)
 %     L{i} = int2str(Q(i));
 % end
-
 H=plot(G,'Layout','force','LineWidth',LWidths,'NodeLabel',{});%,'NodeLabel',names);
 
 

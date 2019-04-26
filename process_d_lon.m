@@ -13,7 +13,7 @@ for i=1:length(w)
         if (processed(i)==0) % if not represented in any vertices
             K = [K i];
             processed(i) = 1;
-            [N, processed] = recursively_get_neighbours(i,w,neighbours,pro650*cessed);
+            [N, processed] = recursively_get_neighbours(i,w,neighbours,processed);
             [K] = [K N];
             K = unique(K);
             V{v_index} = K;
