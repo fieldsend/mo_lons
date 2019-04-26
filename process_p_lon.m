@@ -1,5 +1,17 @@
 function [V,B,Adj,EE,C] = process_p_lon(X,Y,state,neighbours)
 
+%  [V,B,EE,C,PO] = process_p_lon(X,Y,w,YY,state, neighbours)
+%
+% Processes data outputted from exaustive_generate_lon to create 
+% the matrices needed to plot the PLON
+%
+% see generate_GECCO_2019_plots for example usage
+%
+% state holds destination of the walk from the index
+%
+% Jonathan Fieldsend, University of Exeter, 2019
+% See license information in package, available at 
+% https://github.com/fieldsend/mo_lons
 
 min_state = cell(0);
     for j=1:length(state)
@@ -60,24 +72,13 @@ for i=1:length(state)
                 Z(j) = 1;
             end
         end
-        %if length(K)==length(V{j}) %if V{j} is a subset of state{i}
-        %    B(j) = B(j)+1;
-        %    Z(j) = 1;
-        %end
+        
     end
     % now increase weight between vertices which all have path from ith
     Adj(Z==1,index) = Adj(Z==1,index)+1;
-%     for j=1:length(V)
-%         if (Z(j)==true)
-%             Adj(j,Z==1) =  Adj(j,Z==1) + 1;
-%             Adj(Z==1,j) =  Adj(Z==1,j) + 1;
-%         end
-%     end
+
 end
 
-%for j=1:length(V)
-%   Adj(j,j) = length(V{j}); 
-%end
 
 % now colour each vertex
 
@@ -103,9 +104,6 @@ end
 for i=1:length(V) % for each vertex
     C(i) = sum(PO(V{i})); % sum number of vertex members who are pareto optimal
 end
-
-
-
 
 
 
