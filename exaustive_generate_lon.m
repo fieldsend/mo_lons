@@ -1,4 +1,4 @@
-function [X,Y,B,YY,state,neighbours,EE] = exaustive_generate_lon(cost_function, args, p_lon, upper_bound, lower_bound, resolution, num_of_objectives)
+function [X,Y,state,neighbours,B,YY] = exaustive_generate_lon(cost_function, args, p_lon, upper_bound, lower_bound, resolution, num_of_objectives)
 
 % exaustive_generate_lon(cost_function, type, max, min, resolution)
 %
@@ -7,8 +7,8 @@ function [X,Y,B,YY,state,neighbours,EE] = exaustive_generate_lon(cost_function, 
 % cost_function = handle to cost function to be minimise d, should expect a 
 %                 vector of length(max_values) and an optional args argument
 % args = any additional structural arguments needed by the cost function
-% p_lon = LON pair type, true means p_lon generated, false means d_lon
-%                 generated
+% p_lon = LON pair type, true means PLON data generated, false means DNON
+%                 data generated
 % upper_bound = array of maximum input values
 % lower_bound = array of minimum input values
 % resolution = number of slices to grid each dimension
@@ -16,24 +16,35 @@ function [X,Y,B,YY,state,neighbours,EE] = exaustive_generate_lon(cost_function, 
 %
 % OUTPUTS
 %
+% X = design locations queried
+% Y = fitness at design locations queried
+% state = cell array containing attractor(s) for each design location
+%         queries 
+% neighbours = neighbour indices for each design location (an Inf entered 
+%         for when there is not a fixed number of neighbours for all designs  
+% B = DLON basin weights, weighetd number of hillclimbs leading to location 
+%         (DNON only, empty for PLON)
+% YY = matrix of B values (DNON only, empty for PLON)
 %
 %
-% Function generates a p-LON or d-LON pair based on gridding the continuous
+% Function generates data for a PLON or DNON based on gridding the continuous
 % space cost_function at the given resolution, in a box constraint space
 %
 %
 % Jonathan Fieldsend, University of Exeter, 2019
+% See license information in package, available at 
+% https://github.com/fieldsend/mo_lons
+
 
 d = length (upper_bound);
 max_integer = resolution-1;
 step_size = (upper_bound-lower_bound)/max_integer;
 
-number_of_samples = resolution^d
+number_of_samples = resolution^d;
 X = zeros(number_of_samples,d);
 Y = zeros(number_of_samples,num_of_objectives);
 coordinate_multiplier = get_coordinate_multiplier(d,resolution); 
 
-D = []; % set of disjoint local optima sets
 
 %evaluate all points on the grid
 for i=1:number_of_samples
@@ -46,8 +57,7 @@ fprintf('evaluated all fitnesses\n');
 if (p_lon)
     [state, neighbours] = generate_p_lon(X,Y,d,num_of_objectives,number_of_samples,resolution,coordinate_multiplier);
     B=[];
-    YY=[];
-    
+    YY=[]; 
 else
     [B, state, neighbours] = generate_d_lon(X,Y,d,num_of_objectives,number_of_samples,resolution,coordinate_multiplier);
     % now convert to matrix
