@@ -17,7 +17,7 @@ Note codebase is illustrative of proceedures and not optimised for speed!
 
 FUNCTION OVERVIEW
 
-regenerate_GECCO_2019_plots.m --- script will regenerate all the PLON, DNON and PLOS-net plots from the paper
+generate_GECCO_2019_plots.m --- script will regenerate all the PLON, DNON and PLOS-net plots from the paper
 
 gecco_workshop_2019_problem1.m, gecco_workshop_2019_problem2.m and gecco_workshop_2019_problem3.m --- cost functions used in illustrations in the paper. The last takes an argument holding the grid for each objective (this data is stored in the two .mat files loaded in regenerate_GECCO_2019_plots.m).
 
