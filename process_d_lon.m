@@ -1,8 +1,17 @@
 function [V,B,EE,C,PO] = process_d_lon(X,Y,w,YY,state, neighbours)
 
-
+%  [V,B,EE,C,PO] = process_d_lon(X,Y,w,YY,state, neighbours)
+%
+% Processes data outputted from exaustive_generate_lon to create 
+% the matrices needed to plot the DNON
+%
+% see generate_GECCO_2019_plots for example usage
+%
 % state holds destination of all walks from the index
-
+%
+% Jonathan Fieldsend, University of Exeter, 2019
+% See license information in package, available at 
+% https://github.com/fieldsend/mo_lons
 
 V=cell(1,1);
 v_index=1;

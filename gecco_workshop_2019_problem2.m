@@ -1,5 +1,14 @@
 function y = gecco_workshop_2019_problem1(x,S)
 
+% y = gecco_workshop_2019_problem1(x,S)
+%
+% Second simple illustrative problem used in GECCO 2019 paper.
+%
+% Jonathan Fieldsend, University of Exeter, 2019
+% See license information in package, available at 
+% https://github.com/fieldsend/mo_lons
+
+
 if (sum(x<=0)>0)
     error('input variable cannot be negative');
 end

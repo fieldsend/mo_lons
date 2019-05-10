@@ -1,5 +1,15 @@
 function y = gecco_workshop_2019_problem3(x,S)
 
+% y = gecco_workshop_2019_problem1(x,S)
+%
+% Many-objective illustrative problem used in GECCO 
+% 2019 paper. S contains extra data needed by the 
+% different problem versions, available in the repository 
+%
+% Jonathan Fieldsend, University of Exeter, 2019
+% See license information in package, available at 
+% https://github.com/fieldsend/mo_lons
+
 if (sum(x<=0)>0)
     error('input variable cannot be negative');
 end
@@ -18,5 +28,3 @@ y(4) = S.F4(x(1),x(2));
 y(5) = S.F5(x(1),x(2)); 
  
     
-
-

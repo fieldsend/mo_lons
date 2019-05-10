@@ -1,5 +1,16 @@
 function [DNO] = plot_PLOS_net(X,Y,state,neighbours,edge_weight,node_weight)
 
+% [DNO] = plot_PLOS_net(X,Y,state,neighbours,edge_weight,node_weight)
+%
+% Function plots the PLOS-net for the given parameters, outputted from the 
+% exaustive_generate_lon function. See e.g. generate_GECCO_2019_plots for 
+% example usage.
+%
+% Jonathan Fieldsend, University of Exeter, 2019
+% See license information in package, available at 
+% https://github.com/fieldsend/mo_lons
+
+
 [~,k] = size(Y);
 
 % function plots the PLOS-net for the given inputs
@@ -57,20 +68,7 @@ for i=1:length(DNO)
     highlight(H,i,'MarkerSize',node_weight,'NodeColor',0.1+abs(ones(1,3)*(Y(DNO(i),k)-min_y)/(max_y-min_y)-1)*0.5);
 end
 
-
-% if min_y==max_y
-%     for i=1:length(basin_size)
-%         highlight(H,i,'MarkerSize',node_weight*basin_size(i)/sum(basin_size),'NodeColor',[0 0 0]);
-%     end
-% else
-%     for i=1:length(basin_size)
-%             highlight(H,i,'MarkerSize',node_weight*basin_size(i)/sum(basin_size),'NodeColor',0.1+abs(ones(1,3)*(Q(i)-min_y)/(max_y-min_y)-1)*0.5);
-%     end
-% end
 set(gca,'YTick',[])
 set(gca,'XTick',[])
-
-
-
 
 end
