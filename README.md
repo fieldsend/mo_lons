@@ -1,6 +1,8 @@
 # mo_lons
 
-Matlab codebase for the paper
+Matlab codebase for multi-objective LONs. 
+
+The subdirectory gecco_2019 contains the codebase for the paper
 
 Jonathan E. Fieldsend and Khulood Alyahya. 2019. 
 Visualising the Landscape of Multi-Objective Problems using Local Optima Networks. 
@@ -13,7 +15,7 @@ Institutional repository: http://hdl.handle.net/10871/36891
 
 Publisher DOI: https://doi.org/10.1145/3319619.3326838
 
-Note codebase is illustrative of proceedures and not optimised for speed!
+Note the gecco_2019 codebase is illustrative of proceedures and not optimised for speed!
 
 FUNCTION OVERVIEW
 
